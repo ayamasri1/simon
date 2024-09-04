@@ -12,6 +12,14 @@ $(document).keydown(function(){
     }
 })
 
+$("h1").keydown(function(){
+    if (!started){
+        $("#level-title").text("Level " + level);
+        nextSequence();
+        started=true;
+    }
+})
+
 $(".btn").on("click" , function (){
     var userChosenColor = $(this).attr("id");
     userClickedPattern.push(userChosenColor);
@@ -30,7 +38,7 @@ function checkAnswer(currentLevel){
     else{
         playSound("wrong");
         $("body").addClass("game-over");
-        $("#level-title").text("Game over! Press any key to restart");
+        $("#level-title").text("Game over! Tap here to restart");
         setTimeout(function(){
             $(".game-over").removeClass("game-over")
         } , 200);
